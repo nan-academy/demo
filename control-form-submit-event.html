@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form POST</title>
+</head>
+<body>
+<form id="form">
+  <label>
+    text
+    <input id="input" name="text">
+  </label>
+  <input type="submit" name="submit" value="submit">
+</form>
+<script type="module">
+  const form = document.getElementById('form')
+  const input = document.getElementById('input')
+
+  // les elements du dom FORM on un event 'submit' qui ce déclanche quand on
+  // valide un formulaire
+  // On va donc ajouté une fonction à l'écoute de notre evenement submit
+  // qui sera appeler à chaques envois du formulaire
+  form.addEventListener('submit', event => {
+    // Comme tout les `events`, notre fonction est appellé avec un argument
+    // `event` qui contient les infos de l'event
+
+    // La on à un soucis qui est que le comportement de base d'un submit de form
+    // fait une requete pour envoyer notre formulaire a un serveur.
+
+    // C'est géré automatiquement sans passé par le JS sauf que la, nous
+    // on veux le géré nous meme et ne pas avoir de rechargement de page.
+
+    // On va appelé la methode `preventDefault` du parametre `event`
+    event.preventDefault()
+
+    // Parfois quand vous allez géré un event il faut annulé les comportements
+    // par défaut du navigateur pour évité d'avoir 2 actions
+    // qui ce déclanche en meme temps
+
+    // En suite je vais récupéré la valeur de mon input
+    console.log(input.value) // dispo dans la proprieté `value` des inputs
+
+    // A partir de la vous en faite ce que vous voulez ça me regarde pas.
+  })
+</script>
+</body>
+</html>
