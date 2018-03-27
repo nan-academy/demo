@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form POST</title>
+</head>
+<body>
+<form id="form">
+  <label>
+    text
+    <input name="text">
+  </label>
+  <label>
+    num
+    <input type="number" name="num">
+  </label>
+  <input type="submit" name="submit" value="submit">
+</form>
+<script type="module">
+  form.addEventListener('submit', event => {
+    event.preventDefault()
+    const formTarget = event.target
+
+    // En suite en JS on à un objet spécial pour traiter les formulaire
+    // FormData
+
+    // On l'obtient à partir d'un form :
+    const data = new FormData(formTarget)
+
+    // C'est un objet un peu chelou, j'ai aucune idée de pourquoi c'est pas un
+    // objet normal, c'est le DOM, on pause pas de question.
+
+    // Donc la différence c'est que pour acceder au elements on peu pas juste
+    // faire avec le . ou les []
+    // il faut utilisé la méthode `get` :
+    console.log(data.get('text'))
+    console.log(data.get('num'))
+
+    // Si on veut rajouté un champ on utilise `set`:
+    data.set('secret', 'françis')
+    //        ^ key      ^ value
+
+    console.log(data.get('secret'))
+
+    // Il va reprendre chaque <input> de votre <form>
+    // et il prend leur propriété "name" comme key
+    // et la prop "value" comme valeur
+
+    // avec fetch ça s'utilise comme ça:
+    fetch('/mon/url', { method: 'post', body: data })
+      .then(res => {
+        // On gere la réponse du serveur ici.
+        // bon la on à une 404 car je POST sur une url qui n'existe pas
+      })
+
+  })
+</script>
+</body>
+</html>
