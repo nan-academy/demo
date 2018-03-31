@@ -20,7 +20,7 @@
     event.preventDefault()
     const formTarget = event.target
 
-    // En suite en JS on à un objet spécial pour traiter les formulaire
+    // Ensuite en JS on a un objet spécial pour traiter les formulaires :
     // FormData
 
     // On l'obtient à partir d'un form :
@@ -29,13 +29,13 @@
     // C'est un objet un peu chelou, j'ai aucune idée de pourquoi c'est pas un
     // objet normal, c'est le DOM, on pause pas de question.
 
-    // Donc la différence c'est que pour acceder au elements on peu pas juste
+    // Donc la différence c'est que pour accéder aux elements on peut pas juste
     // faire avec le . ou les []
-    // il faut utilisé la méthode `get` :
+    // il faut utiliser la méthode `get` :
     console.log(data.get('text'))
     console.log(data.get('num'))
 
-    // Si on veut rajouté un champ on utilise `set`:
+    // Si on veut rajouter un champ on utilise `set`:
     data.set('secret', 'françis')
     //        ^ key      ^ value
 
@@ -48,8 +48,8 @@
     // avec fetch ça s'utilise comme ça:
     fetch('/mon/url', { method: 'post', body: data })
       .then(res => {
-        // On gere la réponse du serveur ici.
-        // bon la on à une 404 car je POST sur une url qui n'existe pas
+        // On gère la réponse du serveur ici.
+        // bon là on a une 404 car je POST sur une url qui n'existe pas
       })
 
   })
